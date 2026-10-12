@@ -1,0 +1,31 @@
+model:
+  vision_model_name: google/siglip2-base-patch16-224
+  language_model_name: Qwen/Qwen2.5-0.5B-Instruct
+  projector_type: mlp2x_gelu
+  freeze_vision_encoder: true
+  freeze_language_model: true
+  image_token: <image>
+  model_dtype: bfloat16
+
+data:
+  train_file: data/train.jsonl
+  validation_file: data/validation.jsonl
+  image_root: data/images
+  max_length: 256
+  num_workers: 4
+
+training:
+  output_dir: outputs/siglip2-qwen2.5
+  seed: 42
+  epochs: 3
+  train_batch_size: 4
+  eval_batch_size: 4
+  gradient_accumulation_steps: 8
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  max_grad_norm: 1.0
+  mixed_precision: bf16
+  log_every_steps: 10
+  save_every_steps: 500
+  resume_from: null

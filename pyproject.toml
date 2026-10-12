@@ -1,0 +1,26 @@
+[project]
+name = "vlm-dev"
+version = "0.1.0"
+description = "Modular vision-language model training framework"
+readme = "README.md"
+authors = [
+    { name = "Sakshi Desai", email = "sakshi.desai@kpit.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.15.0",
+    "datasets>=4.4.2",
+    "pillow>=12.1.0",
+    "pyyaml>=6.0.3",
+    "sentencepiece>=0.2.1",
+    "torch>=2.14.0",
+    "torchvision>=0.29.0",
+    "transformers>=5.17.0",
+]
+
+[project.scripts]
+vlm-dev = "vlm_dev:main"
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
